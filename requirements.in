@@ -8,3 +8,7 @@ napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@29cd36b # doe
 napari-ome-zarr
 napari-animation
 ipykernel
+# Added for advanced bioimage analysis and computational microscopy
+biahub @ git+https://github.com/czbiohub-sf/biahub.git@main
+viscy
+waveorder[all]==3.0.0a0

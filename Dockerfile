@@ -10,7 +10,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -qqy  \
         build-essential \
-        python3.10 \
+        python3.11 \
         python3-pip \
         git \
         mesa-utils \
