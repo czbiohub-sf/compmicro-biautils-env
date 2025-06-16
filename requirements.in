@@ -1,0 +1,10 @@
+# This requirements.in file specifies high-level dependencies in a human-readable format.
+# To generate a requirements.txt file which contains fully-resolved dependencies run "pip-compile --no-emit-options" (requires pip-tools)
+# The requirements.txt may be environment-dependent; users should run "pip-compile" for each python environment
+
+iohub @ git+https://github.com/czbiohub-sf/iohub.git@c8822bc
+napari[pyqt5]
+napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@29cd36b # does not include clustering
+napari-ome-zarr
+napari-animation
+ipykernel

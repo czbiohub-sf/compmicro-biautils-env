@@ -1,0 +1,20 @@
+name: Test pip and conda install
+runs:
+  using: composite
+  steps:
+  - name: Set up Python 3.11
+    uses: actions/setup-python@v3
+    with:
+      python-version: "3.11"
+  - name: Install package via pip
+    shell: bash
+    run: python3 -m pip install .
+  - name: Test pip installed version with unittest
+    shell: bash
+    run: python3 -m unittest discover
+  - name: Install conda environment
+    shell: bash
+    run: $CONDA/bin/conda env update --name base --file=environment.yml
+  - name: Test Conda installed version with unittest
+    shell: bash
+    run: $CONDA/bin/python3 -m unittest discover

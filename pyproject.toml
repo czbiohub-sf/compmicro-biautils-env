@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "biautils"
+dynamic = ["version", "dependencies"]
+description = "biautils compute environment for computational microscopy at CZBiohub SF"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+keywords = ["microscopy", "biautils"]
+authors = [{ name = "Nathan Hammond", email = "nathan.hammond@czbiohub.org" }]
+maintainers = [
+  { name = "Ivan Ivanov", email = "ivan.ivanov@czbiohub.org" },
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip-tools",
+    "pre-commit"
+]
+
+[project.scripts]
+env_version = "biautils:env_version"
+
+[project.urls]
+"Homepage" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
+"Source" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
+
+[tool.setuptools]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+version = {attr = "biautils._version.__version__"}
+
+[tool.setuptools_scm]
+version_file = "biautils/_version.py"
