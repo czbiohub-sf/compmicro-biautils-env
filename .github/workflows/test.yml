@@ -10,7 +10,7 @@ on:
 
 jobs:
   install_and_test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-16-cores  # Using larger runner with 84GB disk space
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/reusable/install_and_test
