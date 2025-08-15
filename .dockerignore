@@ -1,0 +1,64 @@
+# IMPORTANT: Ignore pixi environment directory
+# This prevents copying the local environment which could cause issues
+# when building on different platforms/architectures
+.pixi/
+
+# Lock file will be regenerated in container
+pixi.lock
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Testing and development
+.pytest_cache/
+.coverage
+.tox/
+.mypy_cache/
+.ruff_cache/
+tests/
+
+# Version control
+.git/
+.github/
+.gitignore
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation (except what we need)
+docs/
+CHANGELOG.md
+CONTRIBUTING.MD
+myst.yml
+
+# Environment and config files
+.env
+.venv/
+env/
+venv/
+ENV/
+uv.lock
+ruff.toml
+cliff.toml
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Other
+*.log
+docker-compose*.yml
+Dockerfile*
+.dockerignore

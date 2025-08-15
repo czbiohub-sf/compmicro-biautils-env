@@ -1,51 +1,63 @@
-FROM ubuntu:22.04
-ARG PROJECT=compmicro-biautils-env
-ARG SRC_DIR=/src/${PROJECT}
+# Multi-stage build for Pixi-based environment
+# Based on: https://tech.quantco.com/blog/pixi-production
+FROM ghcr.io/prefix-dev/pixi:0.51.0-focal-cuda-12.8.1 AS builder
 
-# below env var required to install libglib2.0-0 non-interactively
-ENV TZ=America/Los_Angeles
-ARG DEBIAN_FRONTEND=noninteractive
+# Set working directory
+WORKDIR /app
 
-# install python resources + graphical libraries used by qt and vispy
-RUN apt-get update && \
-    apt-get install -qqy  \
-        build-essential \
-        python3.11 \
-        python3-pip \
-        git \
-        mesa-utils \
-        x11-utils \
-        libegl1-mesa \
-        libopengl0 \
-        libgl1-mesa-glx \
-        libglib2.0-0 \
-        libfontconfig1 \
-        libxrender1 \
-        libdbus-1-3 \
-        libxkbcommon-x11-0 \
-        libxi6 \
-        libxcb-icccm4 \
-        libxcb-image0 \
-        libxcb-keysyms1 \
-        libxcb-randr0 \
-        libxcb-render-util0 \
-        libxcb-xinerama0 \
-        libxcb-xinput0 \
-        libxcb-xfixes0 \
-        libxcb-shape0 \
-        && apt-get clean
+# Copy pixi configuration files first (better layer caching)
+COPY pixi.toml ./
 
-COPY . ${SRC_DIR}
+# Install git for GitHub dependencies and install environment
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/* \
+    && pixi install --environment default \
+    && rm -rf ~/.cache/rattler
 
-ARG REF_NAME=""
-# We use the REF_NAME build-arg to reset the docker cache, which prevents
-# using a cached build with. Without this, setuptools-scm may not produce
-# the correct version.
-RUN echo "REF_NAME: $REF_NAME"
+# Copy source code after dependencies (better caching)
+COPY src/ ./src/
+COPY README.md LICENSE ./
 
-RUN pip install --upgrade pip setuptools pip-tools && \
-  pip install /src/${PROJECT}
+# Final runtime stage - no pixi binary needed
+FROM debian:bookworm-slim
 
-RUN python3 -m unittest discover
+# Install runtime dependencies for GUI support
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    libxkbcommon-x11-0 \
+    libxcb-icccm4 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-randr0 \
+    libxcb-render-util0 \
+    libxcb-xinerama0 \
+    libxcb-xinput0 \
+    libxcb-xfixes0 \
+    libxcb-shape0 \
+    libfontconfig1 \
+    libxrender1 \
+    libxi6 \
+    libdbus-1-3 \
+    && rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["python3", "-m", "napari"]
+# Copy only the environment from builder (no pixi binary needed)
+COPY --from=builder /app/.pixi/envs/default /app/.pixi/envs/default
+
+# Copy source code and configuration
+COPY --from=builder /app/src /app/src
+COPY --from=builder /app/README.md /app/LICENSE /app/
+
+# Set working directory
+WORKDIR /app
+
+# Set up environment activation (from pixi shell-hook)
+ENV PATH="/app/.pixi/envs/default/bin:${PATH}"
+ENV CONDA_PREFIX="/app/.pixi/envs/default"
+ENV PYTHONPATH="/app/src"
+
+# Direct Python execution without pixi runtime
+CMD ["python", "-c", "import biautils; biautils.print_environment_info()"]

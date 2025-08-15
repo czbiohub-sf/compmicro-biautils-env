@@ -1,7 +1,0 @@
-name: biautils
-dependencies:
-  - python>3.11
-  - pip
-  - pip:
-    # Install the package from the local directory
-    - .

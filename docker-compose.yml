@@ -1,0 +1,31 @@
+services:
+  biautils:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime  # Use the runtime stage
+    image: biautils:latest
+    container_name: biautils-env
+    # Enable GUI support (X11 forwarding for Linux)
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      # Mount X11 socket for GUI applications
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # Optional: Mount data directory for processing
+      - ./data:/app/data:rw
+    # Network mode for GUI support
+    network_mode: host
+    # Command override for testing
+    command: python -c "import biautils; biautils.print_environment_info()"
+
+  # Alternative service for HPC batch processing without GUI
+  biautils-batch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: biautils:batch
+    container_name: biautils-batch
+    volumes:
+      - ./data:/app/data:rw
+    command: python -c "import biautils; print('Batch processing mode')"

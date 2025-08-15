@@ -1,4 +1,31 @@
+
 # compmicro-biautils-env
+
+<div align="center">
+
+|               |                                                                                                                                                                                                              |
+| :-----------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  **Status**   | [![Build][badge-build]][link-build] [![Tests][badge-test]][link-test] [![Documentation][badge-docs]][link-docs] [![pre-commit][badge-pre-commit]][link-pre-commit] |
+|   **Meta**    |         [![Hatch project][badge-hatch]][link-hatch] [![Ruff][badge-ruff]][link-ruff] [![uv][badge-uv]][link-uv] [![License][badge-license]][link-license] [![gitmoji][badge-gitmoji]][link-gitmoji]          |
+|  **Package / Docker**  |                                                                                                                                                                                                              |
+|               |                                                                                                                                                                                                              |
+
+</div>
+
+[badge-build]: https://github.com/czbiohub-sf/compmicro-biautils-env/actions/workflows/build.yaml/badge.svg
+[badge-test]: https://github.com/czbiohub-sf/compmicro-biautils-env/actions/workflows/test.yaml/badge.svg
+[badge-docs]: https://img.shields.io/readthedocs/annsel?logo=readthedocs
+
+[badge-ruff]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[badge-uv]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json
+[badge-license]: https://img.shields.io/badge/License-BSD%203--Clause-yellow.svg
+[badge-hatch]: https://img.shields.io/badge/%F0%9F%A5%9A-Hatch-4051b5.svg
+
+[badge-pre-commit]: https://results.pre-commit.ci/badge/github/czbiohub-sf/compmicro-biautils-env/main.svg
+[badge-gitmoji]: https://img.shields.io/badge/gitmoji-😜😍-FFDD67.svg
+
+
+
 This repo contains an environment definition and automated build for the "biautils" Python environment used for analysis of N-dimensional microscopy data. The environment is maintained by the Computational Microscopy platform at the Chan Zuckerberg Biohub - San Francisco and is available on the `bruno` high performance compute cluster.
 
 ## Loading the environment on `bruno`
@@ -31,7 +58,25 @@ Summary: biautils compute environment for computational microscopy at CZBiohub S
 ## Installation
 You can install your own copy of this environment in the following ways. See the available releases at https://github.com/czbiohub-sf/compmicro-biautils-env/releases.
 
-### Pip
+### Pixi (Recommended - Cross-platform support)
+```bash
+# Install Pixi if you haven't already
+curl -fsSL https://pixi.sh/install.sh | bash
+
+# Clone and setup the environment
+git clone git@github.com:czbiohub-sf/compmicro-biautils-env.git
+cd compmicro-biautils-env
+git checkout v${RELEASE_VERSION}
+
+# Install and activate the environment
+pixi install
+pixi shell
+
+# Or run commands directly
+pixi run napari
+```
+
+### UV/Pip
 ```
 python3 -m pip install git+https://github.com/czbiohub-sf/compmicro-biautils-env.git@v${RELEASE_VERSION}
 ```
@@ -65,3 +110,24 @@ apptainer exec docker://ghcr.io/czbiohub-sf/compmicro-biautils-env:$v{RELEASE_VE
 
 ## Contributing
 We welcome contributions! Please see the [Contributing guide](./CONTRIBUTING.MD)
+
+<!-- done3 -->
+
+[scverse-discourse]: https://discourse.scverse.org/
+[issue-tracker]: https://github.com/czbiohub-sf/compmicro-biautils-env/issues
+[changelog]: https://annsel.readthedocs.io/en/latest/changelog.html
+[link-docs]: https://annsel.readthedocs.io
+[link-api]: https://annsel.readthedocs.io/en/latest/api/index.html
+[link-tutorial]: https://annsel.readthedocs.io/en/latest/notebooks/all_of_annsel.html
+[link-pypi]: https://pypi.org/project/annsel
+
+[link-test]: https://github.com/czbiohub-sf/compmicro-biautils-env/actions/workflows/test.yml
+[link-build]: https://github.com/czbiohub-sf/compmicro-biautils-env/actions/workflows/build.yaml
+[link-ruff]: https://github.com/astral-sh/ruff
+[link-uv]: https://github.com/astral-sh/uv
+[link-license]: https://opensource.org/licenses/BSD-3-Clause
+[link-hatch]: https://github.com/pypa/hatch
+[link-narwhals]: https://github.com/narwhals-dev/narwhals
+[link-disucssions]: https://github.com/czbiohub-sf/compmicro-biautils-env/discussions
+[link-pre-commit]: https://results.pre-commit.ci/latest/github/czbiohub-sf/compmicro-biautils-env/main
+[link-gitmoji]: https://gitmoji.dev/

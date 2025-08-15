@@ -1,0 +1,55 @@
+[project]
+name = "biautils"
+version = "0.2.0"
+description = "biautils compute environment for computational microscopy at CZBiohub SF"
+authors = ["CZ Biohub and iohub contributors <cm-biautils@czbiohub.org>"]
+channels = ["conda-forge", "nvidia", "pytorch", "numba"]
+platforms = ["linux-64"]
+
+[tasks]
+# # Display environment info on startup
+# env-version = { cmd = "python -c 'import biautils'" }
+# # Run napari
+# napari = { cmd = "python -m napari", depends-on = ["env-version"] }
+# # Build documentation
+# build-docs = { cmd = "jupyter-book build docs", env = { JUPYTER_BOOK_CONFIG = "myst.yml" } }
+# # Development tasks
+# test = { cmd = "python -m pytest tests/" }
+# lint = { cmd = "ruff check src/" }
+# format = { cmd = "ruff format src/" }
+
+[dependencies]
+# Python runtime
+python = "==3.11"
+# scipy <1.16 for biahub compatibility
+scipy = "<1.16"
+
+
+[pypi-dependencies]
+napari = {extras = ["pyqt6"]}
+napari-iohub = { git = "https://github.com/czbiohub-sf/napari-iohub" }
+biahub = { git = "https://github.com/czbiohub-sf/biahub" }
+ultrack = { git = "https://github.com/royerlab/ultrack"}
+waveorder = { version = ">=3.0.0a1", extras = ["all"] }
+viscy = ">=0.3.2"
+
+[feature.track]
+channels = ["conda-forge", "rapidsai"]
+platforms = ["linux-64"]
+
+[feature.track.dependencies]
+cupy = "*"
+cucim = "*"
+pytorch-cuda = "*"
+catboost = "*"
+scikit-learn = "*"
+
+
+[feature.track.system-requirements]
+cuda = "12"
+
+[environments]
+# Default environment
+default = { solve-group = "default" }
+ultrack = { features = ["track"], solve-group = "default" }
+
