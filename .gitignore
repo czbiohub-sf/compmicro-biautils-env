@@ -21,3 +21,6 @@ __pycache__/
 
 # MyST build outputs
 _build
+
+# Pixi.sh
+./pixi/
