@@ -24,3 +24,6 @@ _build
 
 # Pixi.sh
 .pixi/
+
+# AI
+.claude/

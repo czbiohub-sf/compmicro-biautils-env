@@ -7,9 +7,8 @@ channels = ["conda-forge", "nvidia", "pytorch", "numba", "rapidsai"]
 platforms = ["linux-64"]
 
 [tasks]
-env-version = { cmd = "env_version" }
-build-docs = { cmd = "jupyter book build docs" }
-interactive-docs = { cmd = "jupyter book start docs" }
+env-info = { cmd = "env_info" }
+start-napari = { cmd = "napari"}
 
 [system-requirements]
 cuda = "12"
@@ -23,10 +22,13 @@ cucim = "*"
 pytorch-cuda = "==12.4"
 catboost = "*"
 scikit-learn = "*"
+ffmpeg = "*" # napari-animation requires ffmpeg
 
 [pypi-dependencies]
 napari = {extras = ["pyqt6"]}
 napari-iohub = { git = "https://github.com/czbiohub-sf/napari-iohub" }
+napari-ome-zarr = {version = ">=0.6.1"}
+napari-animation = {version = ">=0.0.9"}
 biahub = { git = "https://github.com/czbiohub-sf/biahub" }
 ultrack = { git = "https://github.com/royerlab/ultrack"}
 waveorder = { version = ">=3.0.0a1", extras = ["all"] }

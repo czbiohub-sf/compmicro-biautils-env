@@ -23,8 +23,9 @@ DEPENDENCY_CATEGORIES = {
         "numpy",
         "scikit-learn",
     ],
-    "🚀 Pipeline": [
+    "🚀 Pipeline and I/O": [
         "biahub",
+        "iohub",
     ],
     "🧠 AI/ML": [
         "ultrack",
