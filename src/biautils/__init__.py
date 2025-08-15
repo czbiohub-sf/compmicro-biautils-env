@@ -3,16 +3,46 @@
 import sys
 from importlib.metadata import PackageNotFoundError, version
 
-MAIN_DEPENDENCIES = [
-    "napari",
-    "napari-ome-zarr",
-    "napari-animation",
-    "napari-iohub",
-    "ipykernel",
-    "biahub",
-    "waveorder",
-    "viscy",
-]
+from rich import box
+from rich.console import Console
+from rich.panel import Panel
+from rich.tree import Tree
+
+__all__ = ["print_environment_info"]
+
+# Core dependencies organized by category
+DEPENDENCY_CATEGORIES = {
+    "🦠 Napari": [
+        "napari",
+        "napari-ome-zarr",
+        "napari-animation",
+        "napari-iohub",
+    ],
+    "🔬 Scientific Computing": [
+        "scipy",
+        "numpy",
+        "scikit-learn",
+    ],
+    "🚀 Pipeline": [
+        "biahub",
+    ],
+    "🧠 AI/ML": [
+        "ultrack",
+        "catboost",
+    ],
+    "🔍 Image Processing": [
+        "waveorder",
+        "viscy",
+        "cucim",
+    ],
+    "⚡ GPU Acceleration": [
+        "cupy",
+    ],
+    "🛠️ Development": [
+        "ipykernel",
+    ],
+}
+
 
 def get_package_version(package_name: str) -> str | None:
     """Get the version of a package if it's installed."""
@@ -21,24 +51,61 @@ def get_package_version(package_name: str) -> str | None:
     except PackageNotFoundError:
         return None
 
+
+def get_package_status(package_name: str) -> dict[str, str]:
+    """Get package status including version and installation status."""
+    version_info = get_package_version(package_name)
+    if version_info:
+        return {"status": "✅", "version": version_info, "installed": True}
+    else:
+        return {"status": "❌", "version": "not installed", "installed": False}
+
+
 def print_environment_info():
-    """Print biautils version and main dependency versions."""
+    """Print biautils version and main dependency versions with rich formatting."""
+    console = Console()
+
+    # Header with biautils info
     try:
-        # Get biautils version
         biautils_version = version("biautils")
-        print(f"🐸 biautils version: {biautils_version}")
+        header = f"🐸 [bold blue]biautils[/bold blue] version: [green]{biautils_version}[/green]"
+    except PackageNotFoundError:
+        header = "🐸 [bold blue]biautils[/bold blue] version: [red]unknown[/red]"
 
-        # Print main dependency versions
-        print("📦 Main dependencies:")
-        for dep in MAIN_DEPENDENCIES:
-            dep_version = get_package_version(dep)
-            if dep_version:
-                print(f"   {dep}: {dep_version}")
+    python_version = sys.version.split()[0]
+    header += f" | 🐍 Python: [cyan]{python_version}[/cyan]"
+
+    console.print(Panel(header, box=box.ROUNDED, style="bold"))
+
+    # Create dependency tree
+    tree = Tree("📦 [bold]Dependencies[/bold]", style="blue")
+
+    for category, packages in DEPENDENCY_CATEGORIES.items():
+        category_branch = tree.add(f"[bold]{category}[/bold]", style="yellow")
+
+        for package in packages:
+            status = get_package_status(package)
+            if status["installed"]:
+                package_text = f"{status['status']} [green]{package}[/green] ([cyan]{status['version']}[/cyan])"
             else:
-                print(f"   {dep}: not installed")
+                package_text = f"{status['status']} [red]{package}[/red] ([dim]{status['version']}[/dim])"
+            category_branch.add(package_text)
 
-        print(f"🐍 Python version: {sys.version.split()[0]}")
-        print("-" * 50)
+    console.print(tree)
 
-    except PackageNotFoundError as e:
-        print(f"⚠️  Could not retrieve environment info: {e}")
+    # Summary panel
+    total_packages = sum(len(packages) for packages in DEPENDENCY_CATEGORIES.values())
+    installed_packages = sum(
+        1
+        for packages in DEPENDENCY_CATEGORIES.values()
+        for package in packages
+        if get_package_status(package)["installed"]
+    )
+
+    summary = f"📊 [bold]Summary:[/bold] {installed_packages}/{total_packages} packages installed"
+    if installed_packages == total_packages:
+        summary += " [green]✨ All dependencies available![/green]"
+    else:
+        summary += f" [yellow]⚠️  {total_packages - installed_packages} packages missing[/yellow]"
+
+    console.print(Panel(summary, box=box.ROUNDED, style="bold"))

@@ -23,33 +23,15 @@ classifiers = [
   "License :: OSI Approved :: BSD License",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
 ]
 
-dependencies = [
-  "napari[pyqt6]",
-  "napari-ome-zarr",
-  "napari-animation",
-  "ipykernel",
-  "napari-iohub",
-  "biahub",
-  "waveorder[all]==3.0.0a1",
-  "viscy>=0.3.2",
-  "mip>=1.16rc0",
-]
+# No dependencies here - all managed by pixi environments
+dependencies = []
 
-[project.optional-dependencies]
-track = [
-  "ultrack==0.7.0rc1; sys_platform == 'linux'",
-  "biahub[track]",
-]
-segment = ["biahub[cellpose]"]
 
+# Just 1 dependency group for a lightweight environment to build the docs
 [dependency-groups]
-doc = [
-    "jupyter-book>=2.0.0b2",
-]
+docs = ["jupyter-book>=2.0.0b2"]
 
 [project.scripts]
 env_version = "biautils:print_environment_info"
@@ -58,10 +40,5 @@ env_version = "biautils:print_environment_info"
 "Homepage" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
 "Source" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
 
-[tool.uv.sources]
-napari-iohub = { git = "https://github.com/czbiohub-sf/napari-iohub" }
-biahub = { git = "https://github.com/czbiohub-sf/biahub" }
-
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
-
