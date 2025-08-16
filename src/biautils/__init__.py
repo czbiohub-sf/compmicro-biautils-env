@@ -30,6 +30,7 @@ DEPENDENCY_CATEGORIES = {
     "🧠 AI/ML": [
         "ultrack",
         "catboost",
+        "viscy",
     ],
     "🔍 Image Processing": [
         "waveorder",
