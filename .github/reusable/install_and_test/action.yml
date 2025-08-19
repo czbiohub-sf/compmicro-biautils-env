@@ -18,3 +18,5 @@ runs:
   - name: Test Conda installed version with unittest
     shell: bash
     run: $CONDA/bin/python3 -m unittest discover
+
+

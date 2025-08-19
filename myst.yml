@@ -26,8 +26,9 @@ project:
     - file: ./docs/intro.md
     - file: ./docs/installation.md
     - file: ./docs/development.md
+    - file: ./docs/understanding_pixi.md
     - file: CHANGELOG.md
-    - file: CONTRIBUTING.MD
+    - file: CONTRIBUTING.md
   exports:
     - format: pdf
       template: lapreprint-typst
@@ -35,6 +36,7 @@ project:
         - docs/intro.md
         - docs/installation.md
         - docs/development.md
+        - docs/understanding_pixi.md
         - CHANGELOG.md
         - CONTRIBUTING.md
 

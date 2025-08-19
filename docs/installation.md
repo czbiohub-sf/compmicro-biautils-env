@@ -28,6 +28,8 @@ Pixi creates isolated environments in the `compmicro-biautils-env/.pixi/envs` di
 - Package-specific activation scripts
 - Metadata for environment validation and updates
 
+You ask *"why Pixi?"*, [we answer][understanding-pixi].
+
 #### Installation Steps
 
 1. **Load the pixi module on Bruno:**
@@ -96,39 +98,41 @@ After installation, verify your environment is working correctly:
      pixi run env-info
      ```
 
-     :::{note} Example pixi run env-info output
+     :::{note} Example `pixi run env-info` output
      :class: dropdown
 
      ```shell
-     ╭──────────────────────────────────────────────────────────────────────────╮
-     │ 🐸 biautils version: 0.0.0.post8.dev0+5332e73 | 🐍 Python: 3.11.0        │
-     ╰──────────────────────────────────────────────────────────────────────────╯
-     📦 Dependencies
-     ├── 🦠 Napari
-     │   ├── ✅ napari (0.6.3)
-     │   ├── ✅ napari-ome-zarr (0.6.1)
-     │   ├── ✅ napari-animation (0.0.9)
-     │   └── ✅ napari-iohub (0.1.0a1.dev1+g8ccff7c)
-     ├── 🔬 Scientific Computing
-     │   ├── ✅ scipy (1.15.2)
-     │   ├── ✅ numpy (2.2.6)
-     │   └── ✅ scikit-learn (1.7.1)
-     ├── 🚀 Pipeline
-     │   └── ✅ biahub (0.1.0)
-     ├── 🧠 AI/ML
-     │   ├── ✅ ultrack (0.7.0rc1)
-     │   └── ✅ catboost (1.2.8)
-     ├── 🔍 Image Processing
-     │   ├── ✅ waveorder (3.0.0a1)
-     │   ├── ✅ viscy (0.3.2)
-     │   └── ✅ cucim (25.8.0)
-     ├── ⚡ GPU Acceleration
-     │   └── ✅ cupy (13.5.1)
-     └── 🛠️ Development
-         └── ✅ ipykernel (6.30.1)
-     ╭──────────────────────────────────────────────────────────────────────────╮
-     │ 📊 Summary: 15/15 packages installed ✨ All dependencies available!      │
-     ╰──────────────────────────────────────────────────────────────────────────╯
+        ╭───────────────────────────────────────────────────────────────────────╮
+        │ 🐸 biautils version: 0.0.0.post11.dev0+bacc161 | 🐍 Python: 3.11.0     │
+        ╰───────────────────────────────────────────────────────────────────────╯
+        📦 Dependencies
+        ├── 🦠 Napari
+        │   ├── ✅ napari (0.6.4)
+        │   ├── ✅ napari-ome-zarr (0.6.1)
+        │   ├── ✅ napari-animation (0.0.9)
+        │   └── ✅ napari-iohub (0.1.0a1.dev1+g8ccff7c86)
+        ├── 🔬 Scientific Computing
+        │   ├── ✅ scipy (1.15.2)
+        │   ├── ✅ numpy (2.2.6)
+        │   └── ✅ scikit-learn (1.7.1)
+        ├── 🚀 Pipeline and I/O
+        │   ├── ✅ biahub (0.1.0)
+        │   └── ✅ iohub (0.2.0)
+        ├── 🧠 AI/ML
+        │   ├── ✅ ultrack (0.7.0rc1)
+        │   ├── ✅ catboost (1.2.8)
+        │   └── ✅ viscy (0.3.2)
+        ├── 🔍 Image Processing
+        │   ├── ✅ waveorder (3.0.0a1)
+        │   ├── ✅ viscy (0.3.2)
+        │   └── ✅ cucim (25.8.0)
+        ├── ⚡ GPU Acceleration
+        │   └── ✅ cupy (13.5.1)
+        └── 🛠️ Development
+            └── ✅ ipykernel (6.30.1)
+        ╭───────────────────────────────────────────────────────────────────────╮
+        │ 📊 Summary: 17/17 packages installed ✨ All dependencies available!    │
+        ╰───────────────────────────────────────────────────────────────────────╯
      ```
      :::
 
@@ -148,6 +152,7 @@ Once you have pixi installed and your environment set up, here are the key comma
 
 ### Environment Management
 - **[`pixi install`][pixi-cli-install]** - Install or update the environment based on `pixi.toml`
+
   ```bash
   pixi install
   ```
@@ -160,6 +165,7 @@ Once you have pixi installed and your environment set up, here are the key comma
 
 ### Environment Activation
 - **[`pixi shell`][pixi-cli-shell]** - Start an interactive shell and activate the environment
+
   ```bash
   pixi shell
   ```
@@ -296,3 +302,4 @@ Once your environment is installed and verified:
 [pixi-tasks-docs]: https://pixi.sh/latest/workspace/advanced_tasks/
 [cmbiautils-env-issues]: https://github.com/czbiohub-sf/compmicro-biautils-env/issues
 
+[understanding-pixi]: ./understanding_pixi.md

@@ -42,3 +42,6 @@ env_info = "biautils:print_environment_info"
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
