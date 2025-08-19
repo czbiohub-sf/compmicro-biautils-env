@@ -2,8 +2,8 @@
 version: 1
 project:
   id: 7c6279f9-2174-4cd8-80c5-54ea6d7782b6
-  title: "Compmicro Biautils Env"
-  description: "Chan Zuckerberg Biohub SF Computational Microscopy HPC (Bruno) Docker Image / Apptainer."
+  title: "Compmicro Biautils Environment"
+  description: "Chan Zuckerberg Biohub SF Computational Microscopy HPC Pixi Environment."
   keywords: [ "pixi", "environment", "hpc", "computational microscopy", "biohub" ]
   authors:
     - name: Sricharan Reddy Varra

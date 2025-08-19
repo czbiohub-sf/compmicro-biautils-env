@@ -134,19 +134,15 @@ Pixi's interconnected architecture represents a fundamental shift in package man
 
 ::::{grid} 2
 :::{grid-item-card} 🧩 Features
-:class-header: bg-light
 Provide modularity and reuse across environments
 :::
 :::{grid-item-card} 🌍 Environments
-:class-header: bg-light
 Enable targeted configuration for specific use cases
 :::
 :::{grid-item-card} 🔧 Solve Groups
-:class-header: bg-light
 Guarantee consistency across related environments
 :::
 :::{grid-item-card} 📦 Workspace
-:class-header: bg-light
 Ties everything together with platform-aware, reproducible dependency resolution
 :::
 ::::

@@ -1,4 +1,4 @@
-# CompMicro Biautils Env
+# CompMicro Biautils Environment
 
 +++ {"part": "abstract"}
 The CompMicro Biautils Environment is a comprehensive computational microscopy platform for $N$-dimensional bioimaging data analysis. This integrated environment combines packages for high-throughput reconstruction, label-free imaging, cell tracking, I/O, and visualization.
@@ -6,18 +6,22 @@ The CompMicro Biautils Environment is a comprehensive computational microscopy p
 Choose the full computational suite or a lightweight Napari-focused visualization environment. Optimized for the Bruno HPC cluster at CZ Biohub San Francisco with GPU acceleration (CUDA 12) and parallel processing for large-scale microscopy datasets.
 +++
 
-Environment for N-dimensional microscopy data analysis and visualization.
+Environments for N-dimensional microscopy data analysis and visualization. Two environments are available with the following package configurations:
 
-Includes the following packages:
+### Visualization Environment (`viz`)
 - [`napari`][napari-gh]: *Multi-dimensional image viewer with specialized plugins for scientific imaging.*
 - [`napari-ome-zarr`][napari-ome-zarr-gh]: *Napari plugin for reading and writing OME-Zarr datasets.*
 - [`napari-animation`][napari-animation-gh]: *Napari plugin for creating animations and movies from image data.*
 - [`napari-iohub`][napari-iohub-gh]: *Napari plugin for interactive visualization of high-dimensional microscopy datasets.*
+- [`iohub`][iohub-gh]: *Pythonic and parallelizable I/O library for N-dimensional imaging data with unified support for OME-Zarr, Micro-Manager TIFF, and custom Biohub microscope formats.*
+
+### Default Environment (`default`)
+The default environment includes all packages from the visualization environment, plus additional AI/ML and image processing capabilities:
+
 - [`biahub`][biahub-gh]: *Bio-image analysis hub for high-throughput reconstruction of multimodal microscopy datasets on HPC clusters using OME-ZARR workflows.*
 - [`waveorder`][waveorder-gh]: *A generalist framework for label-agnostic computational microscopy enabling quantitative imaging of biomolecular architecture with diffraction-limited resolution.*
 - [`ultrack`][ultrack-gh]: *Versatile and scalable cell tracking software for 2D/3D timelapse recordings with robust performance under segmentation uncertainty.*
 - [`viscy`][viscy-gh]: *Deep learning pipeline for computational microscopy specializing in virtual staining, representation learning, and semantic segmentation of single-cell phenotypes.*
-- [`iohub`][iohub-gh]: *Pythonic and parallelizable I/O library for N-dimensional imaging data with unified support for OME-Zarr, Micro-Manager TIFF, and custom Biohub microscope formats.*
 
 Maintained by the Computational Microscopy platform at CZ Biohub San Francisco. Available on the Bruno HPC cluster via [`pixi`][pixi-docs].
 
