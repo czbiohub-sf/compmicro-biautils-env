@@ -17,18 +17,18 @@ This document provides development guidelines for contributors to the biautils c
    cd compmicro-biautils-env
    ```
 
-2. **Load pixi and install the environment:**
+2. **Load pixi and install the development environment:**
    ```bash
    module load pixi
-   pixi install
+   pixi install -e dev
    ```
 
 3. **Make your changes** to `pixi.toml` or other configuration files
 
 4. **Test your changes:**
    ```bash
-   pixi install  # Re-install after changes
-   pixi shell    # Test the environment
+   pixi install -e dev  # Re-install after changes
+   pixi shell -e dev    # Test the development environment
    ```
 
 5. **Create a pull request** with your changes
@@ -59,59 +59,129 @@ Before submitting changes:
 3. Test new packages/features you've added
 4. Run `pixi run env-info` to confirm package installation
 
-## Building Documentation Locally
+### Running Tests
 
-### Prerequisites and Setup
+The project includes testing capabilities in both the development and CI environments:
 
-The documentation is built using [Jupyter Book 2][jupyter-book-2], which is currently **not available on conda-forge**. This means we need to use `uv` (or pip) for documentation development.
+::::{tab-set}
+:::{tab-item} Development Environment
+:sync: env-dev
 
-:::{note} Future Documentation Environment
-Once Jupyter Book 2 is available on conda-forge, we will create a dedicated pixi environment for documentation development. Until then, use the uv-based workflow below.
+Use the `dev` environment for comprehensive testing with all dependencies:
+
+```{code} shell
+:label: run-tests-dev
+:caption: Run the test suite in development environment
+pixi run -e dev tests
+```
+
+```{code} shell
+:label: run-tests-dev-verbose
+:caption: Run tests with verbose output (development)
+pixi run -e dev pytest tests/ -v
+```
 :::
 
-### Installation with uv
+:::{tab-item} CI Environment  
+:sync: env-ci
 
-1. **Install uv** (if not already available):
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
+Use the `ci` environment for lightweight testing without heavy ML dependencies:
 
-   or if you're on Bruno
+```{code} shell
+:label: run-tests-ci
+:caption: Run the test suite in CI environment
+pixi run -e ci tests
+```
 
-   ```bash
-   ml uv
-   ```
+```{code} shell
+:label: run-tests-ci-verbose
+:caption: Run tests with verbose output (CI)
+pixi run -e ci pytest tests/ -v
+```
+:::
+::::
 
-2. **Create a virtual environment for documentation:**
-   ```bash
-   uv venv -p 3.11
-   source .venv/bin/activate
-   ```
+To run specific test files or test functions:
+```{code} shell
+:label: run-specific-tests
+:caption: Run specific tests
+pixi run -e dev pytest tests/test_specific.py::test_function -v
+```
 
-3. **Sync Dependencies**
-   ```bash
-   uv sync
-   ```
+The `dev` environment includes all packages for comprehensive testing, while the `ci` environment provides faster, lightweight testing perfect for automated workflows.
 
-### Building Documentation
+## Building Documentation Locally
 
-1. **Build the documentation:**
-   ```shell
-   jupyter-book build .
-   ```
-2. **Interactive Builds:** (edit the documentation and see the changes as you write)
-    ```shell
-    jupyter-book start
-    ```
-3. **Compile a local PDF:**
+### Using Pixi Environments
 
-    Since the documentation follows CommonMark, you are able to compile and export it via LaTeX or [Typst]. Refer to the [PDF Export documentation][jupyter-book-2-export-pdf] for more information.
+The documentation is built using [Jupyter Book 2][jupyter-book-2], which is now available through pixi in both the development and CI environments:
 
-    The configuration currently converts the Markdown into `Typst` which gets compiled to a PDF. You can build this PDF locally with:
+::::{tab-set}
+:::{tab-item} Development Environment
+:sync: env-dev
 
-    ```shell
-    jupyter book build --pdf
-    ```
+Use the `dev` environment for comprehensive documentation building with all dependencies:
+
+```{code} shell
+:label: docs-build-dev
+:caption: Build documentation in development environment
+pixi run -e dev docs-build
+```
+
+```{code} shell
+:label: docs-start-dev
+:caption: Start interactive documentation server (development)
+pixi run -e dev docs-start
+```
+
+```{code} shell
+:label: docs-pdf-dev
+:caption: Build PDF documentation (development)
+pixi run -e dev docs-pdf
+```
+:::
+
+:::{tab-item} CI Environment
+:sync: env-ci
+
+Use the `ci` environment for lightweight documentation building in automated workflows:
+
+```{code} shell
+:label: docs-build-ci
+:caption: Build documentation in CI environment
+pixi run -e ci docs-build
+```
+
+```{code} shell
+:label: docs-start-ci
+:caption: Start interactive documentation server (CI)
+pixi run -e ci docs-start
+```
+
+```{code} shell
+:label: docs-pdf-ci
+:caption: Build PDF documentation (CI)
+pixi run -e ci docs-pdf
+```
+:::
+::::
+
+### Manual Jupyter Book Commands
+
+You can also run jupyter-book directly in either environment:
+
+```{code} shell
+:label: docs-manual-build
+:caption: Manual documentation build
+pixi run -e dev jupyter-book build .
+pixi run -e dev jupyter-book start .    # Interactive mode
+```
+
+### PDF Documentation
+
+Since the documentation follows CommonMark, you can compile and export it via LaTeX or [Typst][typst-link]. Refer to the [PDF Export documentation][jupyter-book-2-export-pdf] for more information.
+
+The configuration currently converts the Markdown into `Typst` which gets compiled to a PDF using the `docs-pdf` task.
 
 ### Development Workflow
 

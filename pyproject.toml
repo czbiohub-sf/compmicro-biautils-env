@@ -29,10 +29,6 @@ classifiers = [
 dependencies = []
 
 
-# Just 1 dependency group for a lightweight environment to build the docs
-[dependency-groups]
-doc = ["jupyter-book>=2.0.0b2"]
-
 [project.scripts]
 env_info = "biautils:print_environment_info"
 

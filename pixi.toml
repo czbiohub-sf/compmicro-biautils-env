@@ -56,8 +56,18 @@ pytest = "*"
 [feature.test.tasks]
 tests = "pytest tests/"
 
+# Documentation feature
+[feature.doc.pypi-dependencies]
+jupyter-book = ">=2.0.0b2"
+
+[feature.doc.tasks]
+docs-build = "jupyter-book build ."
+docs-start = "jupyter-book start ."
+docs-pdf = "jupyter-book build --pdf ."
+
 # Environments with solve groups
 [environments]
 default = { features = ["viz", "ml"], solve-group = "main" }
 viz = { features = ["viz"], solve-group = "main" }
-test = { features = ["viz", "ml", "test"], solve-group = "main" }
+dev = { features = ["viz", "ml", "test", "doc"], solve-group = "main" }
+ci = { features = ["test", "doc"], solve-group = "ci" }
