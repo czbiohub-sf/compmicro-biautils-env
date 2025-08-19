@@ -12,7 +12,7 @@ This document provides installation instructions for the **biautils** computatio
 
 Pixi is the recommended method for installing and managing the biautils environment on Bruno. Pixi provides robust environment management with automatic dependency resolution.
 
-#### How Pixi Environments Work
+### How Pixi Environments Work
 
 Pixi creates isolated environments in the `compmicro-biautils-env/.pixi/envs` directory that contain:
 - Standard directories (`bin`, `lib`, `include`) with all required packages
@@ -22,7 +22,7 @@ Pixi creates isolated environments in the `compmicro-biautils-env/.pixi/envs` di
 
 If you'd like a deeper dive, take a look at the following article: [Understanding Pixi][understanding-pixi].
 
-#### Installation Steps
+### Installation Steps
 
 1. **Load the pixi module on Bruno:**
 

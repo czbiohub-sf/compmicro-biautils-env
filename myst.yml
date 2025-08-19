@@ -4,12 +4,11 @@ project:
   id: 7c6279f9-2174-4cd8-80c5-54ea6d7782b6
   title: "Compmicro Biautils Env"
   description: "Chan Zuckerberg Biohub SF Computational Microscopy HPC (Bruno) Docker Image / Apptainer."
-  keywords: [ "docker", "apptainer", "hpc", "computational microscopy", "biohub" ]
+  keywords: [ "pixi", "environment", "hpc", "computational microscopy", "biohub" ]
   authors:
     - name: Sricharan Reddy Varra
       orcid: 0009-0000-5757-6818
       affiliations:
-        - id: org:czbiohub
           institution: Chan Zuckerberg Biohub San Francisco
           department: Computational Microscopy Platform
       email: sricharan.varra@czbiohub.org
@@ -21,12 +20,12 @@ project:
     - name: Eduardo Hirata-Miyasaki
       orcid: https://orcid.org/0000-0002-1016-2447
       affiliations:
-        - id: org:czbiohub
           institution: Chan Zuckerberg Biohub San Francisco
           department: Computational Microscopy Platform
       email: Eduardo.Hirata@czbiohub.org
       roles:
         - Writing - review & editing
+        - Supervision
 
   github: https://github.com/czbiohub-sf/compmicro-biautils-env
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
@@ -37,19 +36,19 @@ project:
     - file: ./docs/usage.md
     - file: ./docs/development.md
     - file: ./docs/understanding_pixi.md
-    - file: CHANGELOG.md
-    - file: CONTRIBUTING.md
+    - file: ./CHANGELOG.md
+    - file: ./CONTRIBUTING.md
   exports:
     - format: pdf
       template: lapreprint-typst
       articles:
-        - docs/intro.md
-        - docs/installation.md
-        - docs/usage.md
-        - docs/development.md
-        - docs/understanding_pixi.md
-        - CHANGELOG.md
-        - CONTRIBUTING.md
+        - ./docs/intro.md
+        - ./docs/installation.md
+        - ./docs/usage.md
+        - ./docs/development.md
+        - ./docs/understanding_pixi.md
+        - ./CHANGELOG.md
+        - ./CONTRIBUTING.md
 
 
 site:
