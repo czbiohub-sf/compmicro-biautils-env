@@ -456,7 +456,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/50/cd/30110dc0ffcf3b131156077b90e9f60ed75711223f306da4db08eff8403b/beautifulsoup4-4.13.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/37/2f/75a254b859dae7c73721b9d07b22ff74d5997a519f3b8488a5743d1d4720/bfio-2.4.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/53/56/17ca3c3dd9820033e3b58e00b9dfa1df98e35bb19f7b3e9d088df4d3d620/bfiocpp-0.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/czbiohub-sf/biahub#70718b55d2ceabffd11d89d854720cd838f6bd7e
+      - pypi: git+https://github.com/czbiohub-sf/biahub#7661787f52086562c5dc05c550f10223029716de
       - pypi: https://files.pythonhosted.org/packages/fc/55/96142937f66150805c25c4d0f31ee4132fd33497753400734f9dfdcbdc66/bleach-6.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/ad/aeebd73dc27f42878af0a2f5e148bb2183b35fbd1000e696d51bd34cb09e/blosc2-3.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/1c/2c/8a0b02d60a1dbbae7faa5af30484b016aa3023f9833dfc0d19b0b770dd6a/botocore-1.39.11-py3-none-any.whl
@@ -1008,7 +1008,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/50/cd/30110dc0ffcf3b131156077b90e9f60ed75711223f306da4db08eff8403b/beautifulsoup4-4.13.4-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/37/2f/75a254b859dae7c73721b9d07b22ff74d5997a519f3b8488a5743d1d4720/bfio-2.4.8-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/53/56/17ca3c3dd9820033e3b58e00b9dfa1df98e35bb19f7b3e9d088df4d3d620/bfiocpp-0.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-      - pypi: git+https://github.com/czbiohub-sf/biahub#70718b55d2ceabffd11d89d854720cd838f6bd7e
+      - pypi: git+https://github.com/czbiohub-sf/biahub#7661787f52086562c5dc05c550f10223029716de
       - pypi: https://files.pythonhosted.org/packages/fc/55/96142937f66150805c25c4d0f31ee4132fd33497753400734f9dfdcbdc66/bleach-6.2.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/6a/ad/aeebd73dc27f42878af0a2f5e148bb2183b35fbd1000e696d51bd34cb09e/blosc2-3.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/1c/2c/8a0b02d60a1dbbae7faa5af30484b016aa3023f9833dfc0d19b0b770dd6a/botocore-1.39.11-py3-none-any.whl
@@ -2005,7 +2005,7 @@ packages:
   requires_dist:
   - numpy
   requires_python: '>=3.8'
-- pypi: git+https://github.com/czbiohub-sf/biahub#70718b55d2ceabffd11d89d854720cd838f6bd7e
+- pypi: git+https://github.com/czbiohub-sf/biahub#7661787f52086562c5dc05c550f10223029716de
   name: biahub
   version: 0.1.0
   requires_dist:
@@ -2049,8 +2049,8 @@ packages:
   requires_python: '>=3.11,<4.0'
 - pypi: ./
   name: biautils
-  version: 0.0.0.post12.dev0+c155126
-  sha256: b9d68fb4e007061f27f3977fd5a54de546037678f1a81da718f4d7518eca8a31
+  version: 0.0.0.post15.dev0+50831e4
+  sha256: 90eb8565fd77830a22e0b43fd0619f54911f9b84e1bea325ea9be5528914d031
   requires_python: '>=3.11'
 - pypi: https://files.pythonhosted.org/packages/fc/55/96142937f66150805c25c4d0f31ee4132fd33497753400734f9dfdcbdc66/bleach-6.2.0-py3-none-any.whl
   name: bleach

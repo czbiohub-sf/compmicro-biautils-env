@@ -50,7 +50,7 @@ The workspace structure physically manifests in the filesystem with a `.pixi` di
 
 Features represent Pixi's most innovative concept - **modular dependency sets** that go beyond simple package lists. Each feature can include conda dependencies, PyPI dependencies, executable tasks, platform restrictions, system requirements, channels, and activation scripts. When you define a feature for "testing" with pytest and related tools, or "cuda" with GPU-specific packages, these become reusable building blocks that any environment can incorporate.
 
-The `biautils` workspace needs different configurations for production, development, visualization, and CI/CD workflows. Instead of maintaining separate dependency lists with significant overlap, you define core runtime dependencies (Python, biautils, iohub), then create specialized features for visualization (napari GUI tools), machine learning (CUDA-accelerated compute libraries), testing (pytest utilities), and documentation (jupyter-book). Each feature can specify platform-specific requirements and CUDA system dependencies (currently the only platform we support is Linux).
+The `biautils` workspace needs different configurations for analysis, development, visualization, and CI/CD workflows. Instead of maintaining separate dependency lists with significant overlap, you define core runtime dependencies (Python, iohub), then create specialized features for visualization (Napari GUI tools), machine learning (CUDA-accelerated compute libraries), testing (pytest utilities), and documentation (jupyter-book). Each feature can specify platform-specific requirements and CUDA system dependencies (currently the only platform we support is Linux).
 
 ```{code} toml
 :label: feature-examples
@@ -99,11 +99,11 @@ dev = { features = ["viz", "ml", "test", "doc"], solve-group = "main" }
 ci = { features = ["test", "doc"], solve-group = "ci" }
 ```
 
-Environments also support the `no-default-feature` flag, which prevents automatic inclusion of the default feature dependencies. This enables creation of minimal environments for specific tasks like linting or documentation building without pulling in the full application dependency tree.
+Environments also support the `no-default-feature` flag, which prevents automatic inclusion of the default feature dependencies. This enables creation of minimal environments for specific tasks like visualization with the `viz` environment.
 
 ## Solve groups ensure cross-environment consistency
 
-Solve groups represent Pixi's solution to a critical problem in software deployment: **ensuring identical dependency versions** between related environments. When environments share a solve group, Pixi's resolver treats them as a single unified environment during dependency resolution, then creates specific subsets for each actual environment. This guarantees that your production environment uses exactly the same package versions that were tested in your test environment.
+Solve groups represent Pixi's solution to a critical problem in software deployment: **ensuring identical dependency versions** between related environments. When environments share a solve group, Pixi's resolver treats them as a single unified environment during dependency resolution, then creates specific subsets for each actual environment.
 
 The solve group mechanism works by collecting all dependencies from all environments in the group, resolving them together to find a compatible set of versions, then installing only the required subset in each environment. **This eliminates the "works on my machine" problem** by ensuring that if a package appears in multiple environments within a solve group, it will have identical versions across all of them.
 
@@ -118,6 +118,8 @@ This dual-ecosystem approach provides several advantages. **Binary packages from
 The resolution architecture handles complex scenarios like packages available in both ecosystems (conda takes precedence), build dependencies for compiled packages, and platform-specific requirements. When conflicts arise, Pixi's sophisticated solver finds compatible versions across the entire dependency tree, considering system requirements, platform constraints, and channel priorities.
 
 ## Patterns for other complex projects
+
+As an aside, we'll explore a few other patterns at a high level.
 
 Real-world projects demonstrate how these concepts work together. **A web application with multiple deployment targets** might use solve groups to ensure production-test parity, features to separate development tools from runtime dependencies, and environments to create specific deployment configurations. The workspace configuration defines common channels and platforms, while features add specialized capabilities like database drivers or monitoring tools.
 
@@ -151,11 +153,16 @@ This architecture scales from simple single-environment projects to complex mult
 
 ## Further Reading
 
+### HPC Documentation
 - [Oregon State University Research HPC Documentation][oregon-state-pixi]
 - [New Mexico State University HPC Documentation][new-mexico-pixi]
-- [Pixi Blog Post for Scientific Software Workflows][pixi-blog]
+
+### Articles and Blogs
+- [*"Pixi - reproducible, scientific software workflows!"* -- Wolf Vollprecht][pixi-for-science-blog]
+- [*"7 Reasons to Switch from Conda to Pixi"* -- Wolf Vollprecht][conda-to-pixi-blog]
 
 
 [oregon-state-pixi]: https://docs.hpc.oregonstate.edu/cqls/software/conda/pixi/
 [new-mexico-pixi]: https://hpc.nmsu.edu/discovery/software/sstack/types/pixi/
-[pixi-blog]: https://prefix.dev/blog/pixi_for_scientists
+[pixi-for-science-blog]: https://prefix.dev/blog/pixi_for_scientists
+[conda-to-pixi-blog]: https://prefix.dev/blog/pixi_a_fast_conda_alternative

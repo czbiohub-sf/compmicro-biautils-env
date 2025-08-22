@@ -33,8 +33,9 @@ dependencies = []
 env_info = "biautils:print_environment_info"
 
 [project.urls]
-"Homepage" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
-"Source" = "https://github.com/czbiohub-sf/compmicro-biautils-env"
+Homepage = "https://github.com/czbiohub-sf/compmicro-biautils-env"
+Source = "https://github.com/czbiohub-sf/compmicro-biautils-env"
+Documentation = "https://czbiohub-sf.github.io/compmicro-biautils-env/"
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"

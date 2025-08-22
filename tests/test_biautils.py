@@ -1,7 +1,5 @@
 from importlib.metadata import PackageNotFoundError, version
 
-import pytest
-
 from biautils import print_environment_info
 
 

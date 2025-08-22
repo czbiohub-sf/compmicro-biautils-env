@@ -291,16 +291,63 @@ pixi run env-info
 pixi run start-napari
 ```
 
+**Run Biahub CLI:**
+```{code} shell
+:label: pixi-run-biahub-default
+:caption: Run the Biahub CLI in the default environment
+pixi run biahub --help
+```
+
+:::{note} Biahub CLI `--help` output in the default environment
+:class: dropdown
+
+```{code} shell
+$ pixi run biahub --help
+Usage: biahub [OPTIONS] COMMAND [ARGS]...
+
+  command-line tools for biahub
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  estimate-bleaching      Estimate bleaching from raw data
+  estimate-deskew         Routine for estimating deskewing parameters
+  deskew                  Deskew a single position across T and C axes
+  estimate-registration   Estimate affine transform between timepoints or arms
+  optimize-registration   Optimize transform based on match filtering
+  register                Apply an affine transformation to a single position
+  estimate-stitch         Estimate stitching parameters for positions
+  stitch                  Stitch positions in wells of a zarr store
+  concatenate             Concatenate datasets (with optional cropping)
+  estimate-stabilization  Estimate translation matrices for XYZ stabilization
+  stabilize               Apply stabilization transforms to dataset
+  estimate-crop           Estimate crop region for dual-channel alignment
+  compute-tf              Compute transfer function using PSF
+  apply-inv-tf            Apply inverse transfer function to dataset
+  reconstruct             Reconstruct a dataset using config
+  estimate-psf            Estimate point spread function from beads
+  deconvolve              Deconvolve across T and C axes using a PSF
+  characterize-psf        Characterize point spread function (PSF)
+  segment                 Segment a position using pretrained model or pipeline
+  virtual-stain           Run VisCy virtual staining
+  process-with-config     Process data with YAML-defined functions
+  track                   Track objects in 2D/3D time-lapse microscopy
+```
+:::
+
+
+
 **Run Python scripts:**
 ```{code} shell
 :label: pixi-run-python-default
 :caption: Run Python scripts in default environment
-pixi run python your_analysis_script.py
+pixi run your_analysis_script.py
 ```
-:::
 
 :::{tab-item} Viz Environment
 :sync: env-viz
+
 
 **Display environment information:**
 ```{code} shell
