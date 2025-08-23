@@ -4,7 +4,7 @@ version = "0.2.0"
 description = "biautils compute environment for computational microscopy at Chan Zuckerberg Biohub San Francisco"
 authors = ["CZ Biohub and iohub contributors <cm-biautils@czbiohub.org>"]
 channels = ["conda-forge", "nvidia", "pytorch", "numba", "rapidsai"]
-platforms = ["linux-64"]
+platforms = ["linux-64", "osx-arm64", "win-64"]
 
 
 [tasks]
@@ -12,7 +12,6 @@ env-info = { cmd = "env_info" }
 start-napari = { cmd = "napari"}
 
 [system-requirements]
-cuda = "12"
 
 # Core runtime dependencies
 [dependencies]
@@ -24,6 +23,9 @@ iohub = { version = ">=0.2.0" }
 rich = ">=13.0.0"
 
 # Visualization feature (GUI tools)
+[feature.viz]
+platforms = ["linux-64", "osx-arm64", "win-64"]
+
 [feature.viz.dependencies]
 ffmpeg = "*"
 
@@ -33,7 +35,11 @@ napari-iohub = { git = "https://github.com/czbiohub-sf/napari-iohub" }
 napari-ome-zarr = { version = ">=0.6.1" }
 napari-animation = { version = ">=0.0.9" }
 
-# ML/AI feature
+# ML/AI feature (Linux-only GPU support)
+[feature.ml]
+platforms = ["linux-64"]
+system-requirements = { cuda = "12" }
+
 [feature.ml.dependencies]
 scipy = "<1.16"
 cupy = "*"
@@ -67,6 +73,6 @@ docs-pdf = "jupyter-book build --pdf ."
 # Environments with solve groups
 [environments]
 default = { features = ["viz", "ml"], solve-group = "main" }
-viz = { features = ["viz"], solve-group = "main" }
+viz = { features = ["viz"], solve-group = "viz" }
 dev = { features = ["viz", "ml", "test", "doc"], solve-group = "main" }
 ci = { features = ["test", "doc"], solve-group = "ci" }

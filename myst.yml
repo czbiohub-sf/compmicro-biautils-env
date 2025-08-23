@@ -7,7 +7,7 @@ project:
   keywords: [ "pixi", "environment", "hpc", "computational microscopy", "biohub" ]
   authors:
     - name: Sricharan Reddy Varra
-      orcid: 0009-0000-5757-6818
+      orcid: https://orcid.org/0009-0000-5757-6818
       affiliations:
           institution: Chan Zuckerberg Biohub San Francisco
           department: Computational Microscopy Platform
@@ -25,6 +25,25 @@ project:
       email: Eduardo.Hirata@czbiohub.org
       roles:
         - Writing - review & editing
+        - Supervision
+        - Validation
+    - name: Taylla Theodoro
+      orcid: https://orcid.org/0000-0003-2651-9890
+      affiliations:
+          institution: Chan Zuckerberg Biohub San Francisco
+          department: Computational Microscopy Platform
+      email: taylla.theodoro@czbiohub.org
+      roles:
+        - Writing - review & editing
+        - Supervision
+        - Validation
+    - name: Ivan Ivanov
+      orcid: https://orcid.org/0000-0001-6389-0213
+      affiliations:
+          institution: Chan Zuckerberg Biohub San Francisco
+          department: Computational Microscopy Platform
+      email: ivan.ivanov@czbiohub.org
+      roles:
         - Supervision
 
   github: https://github.com/czbiohub-sf/compmicro-biautils-env

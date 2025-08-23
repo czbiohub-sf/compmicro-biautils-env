@@ -19,8 +19,9 @@ Pixi revolutionizes Python package management by introducing a **project-centric
 :caption: Hierarchical structure of the biautils Pixi workspace
 📦 biautils Workspace (pixi.toml)
 ├── 🔧 Solve Groups (coordinate resolution across environments)
-│   ├── main: [default, viz, dev] → ensures version consistency
-│   └── ci: [ci] → separate lightweight resolution
+│   ├── main: [default, dev] → ensures version consistency for ML workflows
+│   ├── viz: [viz] → cross-platform visualization environment
+│   └── ci: [ci] → separate lightweight resolution for testing/docs
 │
 ├── 🌍 Environments (isolated execution contexts)
 │   ├── default → combines [viz, ml] features (production HPC environment)
@@ -50,12 +51,15 @@ The workspace structure physically manifests in the filesystem with a `.pixi` di
 
 Features represent Pixi's most innovative concept - **modular dependency sets** that go beyond simple package lists. Each feature can include conda dependencies, PyPI dependencies, executable tasks, platform restrictions, system requirements, channels, and activation scripts. When you define a feature for "testing" with pytest and related tools, or "cuda" with GPU-specific packages, these become reusable building blocks that any environment can incorporate.
 
-The `biautils` workspace needs different configurations for analysis, development, visualization, and CI/CD workflows. Instead of maintaining separate dependency lists with significant overlap, you define core runtime dependencies (Python, iohub), then create specialized features for visualization (Napari GUI tools), machine learning (CUDA-accelerated compute libraries), testing (pytest utilities), and documentation (jupyter-book). Each feature can specify platform-specific requirements and CUDA system dependencies (currently the only platform we support is Linux).
+The `biautils` workspace needs different configurations for analysis, development, visualization, and CI/CD workflows. Instead of maintaining separate dependency lists with significant overlap, you define core runtime dependencies (Python, iohub), then create specialized features for visualization (Napari GUI tools - cross-platform), machine learning (CUDA-accelerated compute libraries - Linux-only), testing (pytest utilities - cross-platform), and documentation (jupyter-book - cross-platform). Each feature can specify platform-specific requirements: ML features are restricted to Linux for CUDA support, while visualization and CI features work across Linux, macOS, and Windows.
 
 ```{code} toml
 :label: feature-examples
 :caption: Example feature configurations for visualization and ML
-# Visualization feature for GUI workstations
+# Visualization feature for GUI workstations (cross-platform)
+[feature.viz]
+platforms = ["linux-64", "osx-arm64", "win-64"]
+
 [feature.viz.dependencies]
 ffmpeg = "*"  # Required for napari-animation
 
@@ -65,16 +69,24 @@ napari-iohub = { git = "https://github.com/czbiohub-sf/napari-iohub" }
 napari-ome-zarr = { version = ">=0.6.1" }
 napari-animation = { version = ">=0.0.9" }
 
-# ML/AI feature for compute environments
+# ML/AI feature for compute environments (Linux-only)
+[feature.ml]
+platforms = ["linux-64"]
+system-requirements = { cuda = "12" }
+
 [feature.ml.dependencies]
 scipy = "<1.16"           # biahub compatibility constraint
 pytorch-cuda = "==12.4"   # CUDA 12 acceleration
 cupy = "*"               # GPU-accelerated NumPy
 cucim = "*"              # GPU-accelerated image processing
+catboost = "*"           # Gradient boosting
+scikit-learn = "*"       # Machine learning library
 
 [feature.ml.pypi-dependencies]
-viscy = ">=0.3.2"        # Virtual staining with computer vision
+biahub = { git = "https://github.com/czbiohub-sf/biahub" }
 ultrack = { git = "https://github.com/royerlab/ultrack" }  # Cell tracking
+waveorder = { version = ">=3.0.0a1", extras = ["all"] }  # Wave optics
+viscy = ">=0.3.2"        # Virtual staining with computer vision
 ```
 
 Features compose through **union semantics** for dependencies and tasks, but **intersection semantics** for platforms. When an environment combines multiple features, Pixi merges their dependencies intelligently, resolving conflicts and creating a unified dependency tree. This composition enables sophisticated patterns like having base features extended by specialized features, or orthogonal features that add independent capabilities.
@@ -89,13 +101,13 @@ The power of environments emerges from their ability to **combine features flexi
 :label: environment-configs
 :caption: Environment configurations combining different features
 [environments]
-# Production HPC environment with visualization and ML capabilities
+# Production HPC environment with visualization and ML capabilities (Linux-only)
 default = { features = ["viz", "ml"], solve-group = "main" }
-# Minimal visualization environment for GUI workstations
-viz = { features = ["viz"], solve-group = "main" }
-# Complete development environment with all capabilities
+# Cross-platform visualization environment for GUI workstations
+viz = { features = ["viz"], solve-group = "viz" }
+# Complete development environment with all capabilities (Linux-only)
 dev = { features = ["viz", "ml", "test", "doc"], solve-group = "main" }
-# Lightweight CI environment for automated testing and documentation
+# Lightweight CI environment for automated testing and documentation (cross-platform)
 ci = { features = ["test", "doc"], solve-group = "ci" }
 ```
 
@@ -107,7 +119,7 @@ Solve groups represent Pixi's solution to a critical problem in software deploym
 
 The solve group mechanism works by collecting all dependencies from all environments in the group, resolving them together to find a compatible set of versions, then installing only the required subset in each environment. **This eliminates the "works on my machine" problem** by ensuring that if a package appears in multiple environments within a solve group, it will have identical versions across all of them.
 
-For computational microscopy workflows, this pattern proves invaluable. In biautils, the production environments (default, viz, dev) share the "main" solve group, ensuring that when you develop and test image analysis pipelines in the dev environment, the production environments use exactly the same versions of core libraries like numpy, scipy, and pytorch-cuda. This eliminates issues where a pipeline works in development but fails in production due to subtle version differences in underlying dependencies. The CI environment uses a separate "ci" solve group for lightweight, fast dependency resolution without the overhead of GPU libraries, perfect for automated testing and documentation building.
+For computational microscopy workflows, this pattern proves invaluable. In biautils, the production environments are organized into three solve groups: the **"main"** group (default, dev) ensures that ML-intensive environments use identical versions of core libraries like numpy, scipy, and pytorch-cuda; the **"viz"** group isolates the visualization environment for independent cross-platform resolution; and the **"ci"** group provides lightweight, fast dependency resolution without GPU library overhead, perfect for automated testing and documentation building. This eliminates issues where a pipeline works in development but fails in production due to subtle version differences, while allowing visualization tools to be updated independently from compute-heavy ML dependencies.
 
 ## Sophisticated dependency resolution across ecosystems
 
@@ -119,7 +131,7 @@ The resolution architecture handles complex scenarios like packages available in
 
 ## Patterns for other complex projects
 
-As an aside, we'll explore a few other patterns at a high level.
+As an aside, we'll explore a few other thought experiements at a high level.
 
 Real-world projects demonstrate how these concepts work together. **A web application with multiple deployment targets** might use solve groups to ensure production-test parity, features to separate development tools from runtime dependencies, and environments to create specific deployment configurations. The workspace configuration defines common channels and platforms, while features add specialized capabilities like database drivers or monitoring tools.
 
