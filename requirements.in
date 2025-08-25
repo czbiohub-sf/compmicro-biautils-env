@@ -4,12 +4,15 @@
 
 
 viscy
-waveorder[all]==3.0.0a0
+waveorder[all]==3.0.0a1
 napari-ome-zarr
+napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@main
 napari-animation
 ipykernel
 
 # Added for advanced bioimage analysis and computational microscopy
-# biahub @ git+https://github.com/czbiohub-sf/biahub.git@main
+ultrack==0.7.0rc1
+biahub @ git+https://github.com/czbiohub-sf/biahub.git@main
+
 
 
