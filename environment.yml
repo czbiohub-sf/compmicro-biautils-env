@@ -1,6 +1,6 @@
 name: biautils
 dependencies:
-  - python>3.11
+  - python>=3.11,<3.12
   - pip
   - pip:
     # Install the package from the local directory
