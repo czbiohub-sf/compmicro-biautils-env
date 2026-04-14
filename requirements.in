@@ -3,16 +3,12 @@
 # The requirements.txt may be environment-dependent; users should run "pip-compile" for each python environment
 
 
-viscy
-waveorder[all]==3.0.0a1
-napari-ome-zarr
-napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@main
-napari-animation
 ipykernel
-
-# Added for advanced bioimage analysis and computational microscopy
-ultrack==0.7.0rc1
-biahub @ git+https://github.com/czbiohub-sf/biahub.git@main
-
-
-
+iohub
+napari-ome-zarr
+napari-animation
+napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@6a5d13f16af0b6a7865a117e9309a837743ee28c
+waveorder[all]
+viscy
+ultrack
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@fd1bf458e50726ba1c9c4b2f989793c8887254c3
