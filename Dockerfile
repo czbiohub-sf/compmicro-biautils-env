@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 ARG PROJECT=compmicro-biautils-env
 ARG SRC_DIR=/src/${PROJECT}
 
@@ -10,14 +10,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -qqy  \
         build-essential \
-        python3.12 \
+        python3 \
         python3-pip \
         git \
         mesa-utils \
         x11-utils \
         libegl1-mesa \
         libopengl0 \
-        libgl1-mesa-glx \
+        libgl1 \
         libglib2.0-0 \
         libfontconfig1 \
         libxrender1 \
@@ -43,8 +43,8 @@ ARG REF_NAME=""
 # the correct version.
 RUN echo "REF_NAME: $REF_NAME"
 
-RUN pip install --upgrade pip setuptools pip-tools && \
-  pip install /src/${PROJECT}
+RUN pip install --break-system-packages --upgrade pip setuptools pip-tools && \
+  pip install --break-system-packages /src/${PROJECT}
 
 RUN python3 -m unittest discover
 
