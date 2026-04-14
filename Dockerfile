@@ -15,7 +15,7 @@ RUN apt-get update && \
         git \
         mesa-utils \
         x11-utils \
-        libegl1-mesa \
+        libegl1 \
         libopengl0 \
         libgl1 \
         libglib2.0-0 \
