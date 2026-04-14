@@ -2,10 +2,10 @@ name: Test pip and conda install
 runs:
   using: composite
   steps:
-  - name: Set up Python 3.11
+  - name: Set up Python 3.12
     uses: actions/setup-python@v3
     with:
-      python-version: "3.11"
+      python-version: "3.12"
   - name: Install package via pip
     shell: bash
     run: python3 -m pip install .
