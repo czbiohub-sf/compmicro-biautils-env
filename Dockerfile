@@ -46,6 +46,6 @@ RUN echo "REF_NAME: $REF_NAME"
 RUN pip install --break-system-packages setuptools pip-tools && \
   pip install --break-system-packages /src/${PROJECT}
 
-RUN python3 -m unittest discover
+RUN cd ${SRC_DIR} && python3 -m unittest discover
 
 ENTRYPOINT ["python3", "-m", "napari"]
