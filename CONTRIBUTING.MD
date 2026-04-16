@@ -37,7 +37,7 @@ To update this environment:
 * Tag the commit with a version identifier (`git tag vX.Y.Z`)
 * Push the tag with `git push --tags` (warning this pushes ALL local tags)
 * Open a Pull Request and ensure that the scheduled [GitHub actions](https://github.com/czbiohub-sf/compmicro-biautils-env/actions) succeed
-* If needed, deploy the new environment to your infrastructure (e.g. by running "conda env update --file=environment.yml".) Deployment varies between sites; the CompMicro team maintains instructions for deployment on bruno [here](https://github.com/czbiohub-sf/compmicro-hpc/blob/release-procedure-for-versioned-environments/hpc/setup_shared_env.md)
+* If needed, deploy the new environment to your infrastructure (e.g. by running "conda env update --file=environment.yml".) Deployment varies between sites; the CompMicro team maintains instructions for deployment on bruno [here](https://github.com/czbiohub-sf/compmicro-hpc/blob/main/hpc/setup_shared_env.md)
 
 ## Guidelines for tag names
 We use semantic versioning for tag names (i.e. `vMAJOR.MINOR.PATCH`) which are then propagated to the package version names.
