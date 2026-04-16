@@ -13,7 +13,6 @@ aiohappyeyeballs==2.6.1
 aiohttp==3.13.5
     # via
     #   aiobotocore
-    #   fsspec
     #   ome-zarr
     #   s3fs
 aioitertools==0.13.0
@@ -60,7 +59,7 @@ babel==2.18.0
     # via jupyterlab-server
 beautifulsoup4==4.14.3
     # via nbconvert
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@fd1bf458e50726ba1c9c4b2f989793c8887254c3
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@bfac4f8791bd6cfa034c8c5ee9539f9a1ca0754f
     # via -r requirements.in
 bleach[css]==6.3.0
     # via nbconvert
@@ -174,9 +173,7 @@ distributed==2026.3.0
 docstring-inheritance==3.0.0
     # via pycromanager
 docstring-parser==0.18.0
-    # via
-    #   jsonargparse
-    #   magicgui
+    # via magicgui
 docutils==0.22.4
     # via readme-renderer
 donfig==0.8.1.post1
@@ -185,7 +182,7 @@ edt==3.1.1
     # via ultrack
 executing==2.2.1
     # via stack-data
-fastapi==0.135.3
+fastapi==0.136.0
     # via ultrack
 fasteners==0.20
     # via ultrack
@@ -195,10 +192,8 @@ fastremap==1.18.0
     # via
     #   cellpose
     #   fill-voids
-filelock==3.25.2
-    # via
-    #   huggingface-hub
-    #   torch
+filelock==3.28.0
+    # via torch
 fill-voids==2.1.1
     # via cellpose
 flexcache==0.3
@@ -215,13 +210,10 @@ frozenlist==1.8.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec[http,s3]==2026.3.0
+fsspec[s3]==2026.3.0
     # via
     #   dask
-    #   huggingface-hub
-    #   lightning
     #   ome-zarr
-    #   pytorch-lightning
     #   s3fs
     #   torch
 geff==1.1.5.1.1
@@ -246,8 +238,6 @@ h11==0.16.0
     #   uvicorn
 heapdict==1.0.1
     # via cachey
-hf-xet==1.4.3
-    # via huggingface-hub
 higra==0.6.13
     # via ultrack
 hsluv==5.0.4
@@ -256,11 +246,8 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via
-    #   huggingface-hub
     #   jupyterlab
     #   ultrack
-huggingface-hub==1.10.2
-    # via timm
 humanize==4.15.0
     # via biahub
 id==1.6.1
@@ -290,8 +277,6 @@ imageio-ffmpeg==0.6.0
     #   napari-animation
 importlib-metadata==9.0.0
     # via waveorder
-importlib-resources==7.1.0
-    # via typeshed-client
 in-n-out==0.2.1
     # via app-model
 iniconfig==2.3.0
@@ -301,7 +286,6 @@ iohub==0.3.0a7
     #   -r requirements.in
     #   biahub
     #   napari-iohub
-    #   viscy
     #   waveorder
 ipykernel==6.31.0
     # via
@@ -357,8 +341,6 @@ joblib==1.5.3
     #   scikit-learn
 json5==0.14.0
     # via jupyterlab-server
-jsonargparse[signatures,typing-extensions]==4.48.0
-    # via viscy
 jsonpointer==3.1.1
     # via jsonschema
 jsonschema[format-nongpl]==4.26.0
@@ -432,13 +414,6 @@ lazy-loader==0.5
     # via
     #   napari
     #   scikit-image
-lightning==2.6.1
-    # via viscy
-lightning-utilities==0.15.3
-    # via
-    #   lightning
-    #   pytorch-lightning
-    #   torchmetrics
 llvmlite==0.47.0
     # via
     #   biahub
@@ -471,7 +446,6 @@ matplotlib==3.10.8
     #   antspyx
     #   biahub
     #   seaborn
-    #   viscy
     #   waveorder
 matplotlib-inline==0.2.1
     # via
@@ -488,9 +462,7 @@ mistune==3.2.0
 ml-dtypes==0.5.4
     # via tensorstore
 monai==1.5.2
-    # via
-    #   biahub
-    #   viscy
+    # via biahub
 more-itertools==11.0.2
     # via
     #   jaraco-classes
@@ -626,7 +598,6 @@ numpy==2.3.5
     #   pycromanager
     #   pyqtgraph
     #   pystackreg
-    #   pytorch-metric-learning
     #   pywavelets
     #   roifile
     #   scikit-image
@@ -637,9 +608,7 @@ numpy==2.3.5
     #   tensorboard
     #   tensorstore
     #   tifffile
-    #   torchmetrics
     #   torchvision
-    #   viscy
     #   vispy
     #   waveorder
     #   xarray
@@ -695,12 +664,11 @@ ome-zarr==0.16.0
     #   ultrack
 opencv-python-headless==4.13.0.92
     # via cellpose
-packaging==26.0
+packaging==26.1
     # via
     #   build
     #   dask
     #   distributed
-    #   huggingface-hub
     #   ipykernel
     #   jupyter-events
     #   jupyter-server
@@ -708,20 +676,16 @@ packaging==26.0
     #   jupyterlab-server
     #   jupytext
     #   lazy-loader
-    #   lightning
-    #   lightning-utilities
     #   matplotlib
     #   nbconvert
     #   pims
     #   pooch
     #   pytest
-    #   pytorch-lightning
     #   qtconsole
     #   qtpy
     #   scikit-image
     #   statsmodels
     #   tensorboard
-    #   torchmetrics
     #   twine
     #   vispy
     #   xarray
@@ -817,7 +781,7 @@ pycparser==3.0
     # via cffi
 pycromanager==0.27.2
     # via waveorder
-pydantic==2.13.0
+pydantic==2.13.1
     # via
     #   app-model
     #   biahub
@@ -831,7 +795,7 @@ pydantic==2.13.0
     #   pydantic-settings
     #   ultrack
     #   waveorder
-pydantic-core==2.46.0
+pydantic-core==2.46.1
     # via pydantic
 pydantic-extra-types==2.11.1
     # via
@@ -893,10 +857,6 @@ python-dotenv==1.2.2
     # via pydantic-settings
 python-json-logger==4.1.0
     # via jupyter-events
-pytorch-lightning==2.6.1
-    # via lightning
-pytorch-metric-learning==2.9.0
-    # via viscy
 pywavelets==1.9.0
     # via waveorder
 pyyaml==6.0.3
@@ -906,15 +866,10 @@ pyyaml==6.0.3
     #   dexp
     #   distributed
     #   donfig
-    #   huggingface-hub
-    #   jsonargparse
     #   jupyter-events
     #   jupytext
-    #   lightning
     #   napari
     #   npe2
-    #   pytorch-lightning
-    #   timm
 pyzmq==27.1.0
     # via
     #   ipykernel
@@ -986,20 +941,16 @@ rpds-py==0.30.0
     #   referencing
 s3fs==2026.3.0
     # via fsspec
-safetensors==0.7.0
-    # via timm
 scikit-image[data]==0.26.0
     # via
     #   dexp
     #   napari
     #   ome-zarr
     #   ultrack
-    #   viscy
 scikit-learn==1.8.0
     # via
     #   antspyx
     #   biahub
-    #   pytorch-metric-learning
 scipy==1.15.3
     # via
     #   antspyx
@@ -1059,9 +1010,7 @@ sympy==1.14.0
 tblib==3.2.2
     # via distributed
 tensorboard==2.20.0
-    # via
-    #   viscy
-    #   waveorder
+    # via waveorder
 tensorboard-data-server==0.7.2
     # via tensorboard
 tensorstore==0.1.82
@@ -1081,8 +1030,6 @@ tifffile==2026.4.11
     #   napari
     #   pims
     #   scikit-image
-timm==1.0.26
-    # via viscy
 tinycss2==1.4.0
     # via bleach
 toml==0.10.2
@@ -1102,24 +1049,12 @@ torch==2.11.0
     # via
     #   biahub
     #   cellpose
-    #   lightning
     #   monai
-    #   pytorch-lightning
-    #   pytorch-metric-learning
-    #   timm
-    #   torchmetrics
     #   torchvision
     #   ultrack
-    #   viscy
     #   waveorder
-torchmetrics==1.9.0
-    # via
-    #   lightning
-    #   pytorch-lightning
 torchvision==0.26.0
-    # via
-    #   cellpose
-    #   timm
+    # via cellpose
 tornado==6.5.5
     # via
     #   distributed
@@ -1134,14 +1069,10 @@ tqdm==4.67.3
     #   biahub
     #   cellpose
     #   dexp
-    #   huggingface-hub
     #   iohub
-    #   lightning
     #   napari
     #   napari-animation
     #   pystackreg
-    #   pytorch-lightning
-    #   pytorch-metric-learning
 traitlets==5.14.3
     # via
     #   ipykernel
@@ -1165,10 +1096,7 @@ twine==6.2.0
 typer==0.24.1
     # via
     #   geff
-    #   huggingface-hub
     #   npe2
-typeshed-client==2.9.0
-    # via jsonargparse
 typing-extensions==4.15.0
     # via
     #   aiosignal
@@ -1180,9 +1108,6 @@ typing-extensions==4.15.0
     #   flexcache
     #   flexparser
     #   grpcio
-    #   huggingface-hub
-    #   lightning
-    #   lightning-utilities
     #   magicgui
     #   napari
     #   numcodecs
@@ -1190,14 +1115,12 @@ typing-extensions==4.15.0
     #   pydantic
     #   pydantic-core
     #   pydantic-extra-types
-    #   pytorch-lightning
     #   referencing
     #   sqlalchemy
     #   starlette
     #   submitit
     #   superqt
     #   torch
-    #   typeshed-client
     #   typing-inspection
     #   zarr
 typing-inspection==0.4.2
@@ -1223,10 +1146,6 @@ urllib3==2.6.3
     #   ultrack
 uvicorn==0.44.0
     # via ultrack
-viscy==0.3.2
-    # via
-    #   -r requirements.in
-    #   biahub
 vispy==0.16.1
     # via
     #   napari
@@ -1263,9 +1182,7 @@ wrapt==2.1.2
     #   deprecated
     #   napari
 xarray==2026.4.0
-    # via
-    #   iohub
-    #   viscy
+    # via iohub
 yarl==1.23.0
     # via aiohttp
 zarr==3.1.6

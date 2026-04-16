@@ -8,7 +8,6 @@ napari-ome-zarr
 napari-animation
 iohub==0.3.0a7
 waveorder[all]==3.0.2
-viscy==0.3.2
 ultrack==0.7.1
 napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@6a5d13f16af0b6a7865a117e9309a837743ee28c
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@fd1bf458e50726ba1c9c4b2f989793c8887254c3
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@bfac4f8791bd6cfa034c8c5ee9539f9a1ca0754f
