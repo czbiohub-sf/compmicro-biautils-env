@@ -6,8 +6,8 @@
 ipykernel
 napari-ome-zarr
 napari-animation
-iohub==0.3.0a7
-waveorder[all]==3.0.2
-ultrack==0.7.1
+iohub==0.3.4
+waveorder[all]==3.0.3
+ultrack==0.7.2
 napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@6a5d13f16af0b6a7865a117e9309a837743ee28c
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@bfac4f8791bd6cfa034c8c5ee9539f9a1ca0754f
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@56a21e279acc8cb3168fd4493207bbc263d35cd7
