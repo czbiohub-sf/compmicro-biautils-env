@@ -1088,7 +1088,7 @@ vispy==0.16.1
     # via
     #   napari
     #   napari-svg
-waveorder[all]==3.0.3
+waveorder[all]==3.0.4
     # via
     #   -r requirements.in
     #   biahub
