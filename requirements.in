@@ -10,4 +10,4 @@ iohub==0.3.4
 waveorder[all]==3.0.4
 ultrack==0.7.2
 napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@6a5d13f16af0b6a7865a117e9309a837743ee28c
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@56a21e279acc8cb3168fd4493207bbc263d35cd7
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@9e5f122a6af6c02b2e9a54f0e82b700f61e4f93e

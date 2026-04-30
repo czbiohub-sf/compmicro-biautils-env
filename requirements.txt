@@ -40,8 +40,6 @@ appdirs==1.4.4
     # via napari
 appnope==0.1.4
     # via ipykernel
-arbol==2026.2.22
-    # via dexp
 argon2-cffi==25.1.0
     # via jupyter-server
 argon2-cffi-bindings==25.1.0
@@ -61,14 +59,10 @@ babel==2.18.0
     # via jupyterlab-server
 beautifulsoup4==4.14.3
     # via nbconvert
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@56a21e279acc8cb3168fd4493207bbc263d35cd7
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@9e5f122a6af6c02b2e9a54f0e82b700f61e4f93e
     # via -r requirements.in
 bleach[css]==6.3.0
     # via nbconvert
-blessed==1.38.0
-    # via gpustat
-blosc==1.11.4
-    # via dexp
 blosc2==4.1.2
     # via
     #   iohub
@@ -80,11 +74,7 @@ build==1.4.3
     #   biahub
     #   npe2
 cachey==0.2.1
-    # via
-    #   dexp
-    #   napari
-cairocffi==1.7.1
-    # via dexp
+    # via napari
 cbcbox==2.929
     # via mip
 cellpose==4.1.1
@@ -98,7 +88,6 @@ certifi==2026.2.25
 cffi==2.0.0
     # via
     #   argon2-cffi-bindings
-    #   cairocffi
     #   mip
 charset-normalizer==3.4.7
     # via requests
@@ -106,8 +95,6 @@ click==8.3.2
     # via
     #   biahub
     #   dask
-    #   dexp
-    #   distributed
     #   typer
     #   ultrack
     #   uvicorn
@@ -115,13 +102,10 @@ click==8.3.2
 cloudpickle==3.1.2
     # via
     #   dask
-    #   distributed
     #   submitit
     #   ultrack
 colorama==0.4.6
     # via pyqtgraph
-colorcet==3.1.0
-    # via dexp
 colorspacious==1.1.2
     # via waveorder
 comm==0.2.3
@@ -132,23 +116,15 @@ contourpy==1.3.3
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
-dask[array,dataframe]==2026.3.0
+dask[array]==2026.3.0
     # via
     #   biahub
-    #   dask-cuda
-    #   dask-image
-    #   dexp
-    #   distributed
     #   iohub
     #   napari
     #   napari-iohub
     #   ndtiff
     #   ome-zarr
     #   pycromanager
-dask-cuda==0.18.0
-    # via dexp
-dask-image==2025.11.0
-    # via dexp
 debugpy==1.8.20
     # via ipykernel
 decorator==5.2.1
@@ -157,12 +133,6 @@ defusedxml==0.7.1
     # via nbconvert
 deprecated==1.3.1
     # via ome-zarr
-dexp==2023.4.10.686
-    # via stitch
-distributed==2026.3.0
-    # via
-    #   dask-cuda
-    #   dexp
 docstring-inheritance==3.0.0
     # via pycromanager
 docstring-parser==0.18.0
@@ -215,10 +185,6 @@ geff-spec==1.1.1
     # via geff
 google-crc32c==1.8.0
     # via zarr
-gpustat==1.1.1
-    # via dexp
-gputil==1.4.0
-    # via dexp
 grpcio==1.80.0
     # via tensorboard
 gurobipy==13.0.1
@@ -259,7 +225,6 @@ imageio==2.37.3
     #   napari
     #   napari-animation
     #   napari-svg
-    #   pims
     #   scikit-image
     #   ultrack
 imageio-ffmpeg==0.6.0
@@ -270,8 +235,6 @@ importlib-metadata==9.0.0
     # via waveorder
 in-n-out==0.2.1
     # via app-model
-iniconfig==2.3.0
-    # via pytest
 iohub==0.3.4
     # via
     #   -r requirements.in
@@ -312,7 +275,6 @@ jedi==0.19.2
     # via ipython
 jinja2==3.1.6
     # via
-    #   distributed
     #   jupyter-server
     #   jupyterlab
     #   jupyterlab-server
@@ -323,9 +285,7 @@ jmespath==1.1.0
     #   aiobotocore
     #   botocore
 joblib==1.5.3
-    # via
-    #   dexp
-    #   scikit-learn
+    # via scikit-learn
 json5==0.14.0
     # via jupyterlab-server
 jsonpointer==3.1.1
@@ -406,9 +366,7 @@ llvmlite==0.47.0
     #   biahub
     #   numba
 locket==1.0.0
-    # via
-    #   distributed
-    #   partd
+    # via partd
 magicgui==0.10.2
     # via
     #   napari
@@ -455,9 +413,7 @@ more-itertools==11.0.2
 mpmath==1.3.0
     # via sympy
 msgpack==1.1.2
-    # via
-    #   blosc2
-    #   distributed
+    # via blosc2
 multidict==6.7.1
     # via
     #   aiobotocore
@@ -532,19 +488,15 @@ npe2==0.8.2
 numba==0.65.0
     # via
     #   biahub
-    #   dask-cuda
     #   largestinteriorrectangle
     #   ultrack
 numcodecs==0.16.5
     # via
-    #   dexp
     #   geff
     #   ultrack
     #   zarr
 numexpr==2.14.1
-    # via
-    #   blosc2
-    #   dexp
+    # via blosc2
 numpy==2.3.5
     # via
     #   antspyx
@@ -554,9 +506,6 @@ numpy==2.3.5
     #   colorspacious
     #   contourpy
     #   dask
-    #   dask-cuda
-    #   dask-image
-    #   dexp
     #   edt
     #   fastremap
     #   fill-voids
@@ -578,7 +527,6 @@ numpy==2.3.5
     #   opencv-python-headless
     #   pandas
     #   patsy
-    #   pims
     #   pycromanager
     #   pyqtgraph
     #   pystackreg
@@ -597,13 +545,8 @@ numpy==2.3.5
     #   xarray
     #   zarr
     #   zarrs
-nvidia-ml-py==13.595.45
-    # via
-    #   gpustat
-    #   pynvml
 ome-zarr==0.16.0
     # via
-    #   dexp
     #   napari-ome-zarr
     #   ultrack
 opencv-python-headless==4.13.0.92
@@ -612,7 +555,6 @@ packaging==26.1
     # via
     #   build
     #   dask
-    #   distributed
     #   ipykernel
     #   jupyter-events
     #   jupyter-server
@@ -622,9 +564,7 @@ packaging==26.1
     #   lazy-loader
     #   matplotlib
     #   nbconvert
-    #   pims
     #   pooch
-    #   pytest
     #   qtconsole
     #   qtpy
     #   scikit-image
@@ -638,8 +578,6 @@ pandas==3.0.2
     # via
     #   antspyx
     #   biahub
-    #   dask
-    #   dask-image
     #   iohub
     #   napari
     #   seaborn
@@ -667,8 +605,6 @@ pillow==12.2.0
     #   tensorboard
     #   torchvision
     #   ultrack
-pims==0.7
-    # via dask-image
 pint==0.25.3
     # via napari
 platformdirs==4.9.6
@@ -677,8 +613,6 @@ platformdirs==4.9.6
     #   npe2
     #   pint
     #   pooch
-pluggy==1.6.0
-    # via pytest
 pooch==1.9.0
     # via scikit-image
 prometheus-client==0.25.0
@@ -695,8 +629,6 @@ protobuf==7.34.1
     # via tensorboard
 psutil==7.2.2
     # via
-    #   distributed
-    #   gpustat
     #   ipykernel
     #   napari
     #   waveorder
@@ -716,9 +648,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.3
     # via stack-data
 pyarrow==19.0.1
-    # via
-    #   dask
-    #   ultrack
+    # via ultrack
 pyconify==0.2.1
     # via superqt
 pycparser==3.0
@@ -759,13 +689,10 @@ pygments==2.20.0
     #   jupyter-console
     #   napari
     #   nbconvert
-    #   pytest
     #   qtconsole
     #   readme-renderer
     #   rich
     #   superqt
-pynvml==13.0.1
-    # via dask-cuda
 pyopengl==3.1.10
     # via napari
 pyparsing==3.3.2
@@ -787,8 +714,6 @@ pyqtgraph==0.14.0
     # via waveorder
 pystackreg==0.2.8
     # via biahub
-pytest==9.0.3
-    # via dexp
 python-dateutil==2.9.0.post0
     # via
     #   aiobotocore
@@ -807,8 +732,6 @@ pyyaml==6.0.3
     # via
     #   antspyx
     #   dask
-    #   dexp
-    #   distributed
     #   donfig
     #   jupyter-events
     #   jupytext
@@ -887,7 +810,6 @@ s3fs==2026.3.0
     # via fsspec
 scikit-image[data]==0.26.0
     # via
-    #   dexp
     #   napari
     #   ome-zarr
     #   ultrack
@@ -900,8 +822,6 @@ scipy==1.15.3
     #   antspyx
     #   biahub
     #   cellpose
-    #   dask-image
-    #   dexp
     #   napari
     #   napari-animation
     #   scikit-image
@@ -909,9 +829,7 @@ scipy==1.15.3
     #   statsmodels
     #   waveorder
 seaborn==0.13.2
-    # via
-    #   dexp
-    #   ultrack
+    # via ultrack
 segment-anything==1.0
     # via cellpose
 send2trash==2.1.0
@@ -922,12 +840,8 @@ six==1.17.0
     # via
     #   python-dateutil
     #   rfc3339-validator
-slicerator==1.1.0
-    # via pims
 sortedcontainers==2.4.0
-    # via
-    #   distributed
-    #   ndtiff
+    # via ndtiff
 soupsieve==2.8.3
     # via beautifulsoup4
 sqlalchemy==2.0.49
@@ -938,8 +852,6 @@ starlette==1.0.0
     # via fastapi
 statsmodels==0.14.6
     # via antspyx
-stitch @ git+https://github.com/ahillsley/stitching@jen
-    # via biahub
 submitit==1.5.4
     # via biahub
 superqt[iconify]==0.8.1
@@ -949,8 +861,6 @@ superqt[iconify]==0.8.1
     #   napari-animation
 sympy==1.14.0
     # via torch
-tblib==3.2.2
-    # via distributed
 tensorboard==2.20.0
     # via waveorder
 tensorboard-data-server==0.7.2
@@ -964,11 +874,8 @@ threadpoolctl==3.6.0
 tifffile==2026.4.11
     # via
     #   cellpose
-    #   dask-image
-    #   dexp
     #   iohub
     #   napari
-    #   pims
     #   scikit-image
 tinycss2==1.4.0
     # via bleach
@@ -981,7 +888,6 @@ tomli-w==1.2.0
 toolz==1.1.0
     # via
     #   dask
-    #   distributed
     #   napari
     #   ome-zarr
     #   partd
@@ -997,7 +903,6 @@ torchvision==0.26.0
     # via cellpose
 tornado==6.5.5
     # via
-    #   distributed
     #   ipykernel
     #   jupyter-client
     #   jupyter-server
@@ -1008,7 +913,6 @@ tqdm==4.67.3
     # via
     #   biahub
     #   cellpose
-    #   dexp
     #   iohub
     #   napari
     #   napari-animation
@@ -1077,7 +981,6 @@ uri-template==1.3.0
 urllib3==2.6.3
     # via
     #   botocore
-    #   distributed
     #   id
     #   requests
     #   twine
@@ -1093,9 +996,7 @@ waveorder[all]==3.0.4
     #   -r requirements.in
     #   biahub
 wcwidth==0.6.0
-    # via
-    #   blessed
-    #   prompt-toolkit
+    # via prompt-toolkit
 webcolors==25.10.0
     # via
     #   antspyx
@@ -1125,7 +1026,6 @@ yarl==1.23.0
     # via aiohttp
 zarr==3.1.6
     # via
-    #   dexp
     #   geff
     #   geff-spec
     #   iohub
@@ -1134,8 +1034,6 @@ zarr==3.1.6
     #   zarrs
 zarrs==0.2.3
     # via iohub
-zict==3.0.0
-    # via distributed
 zipp==3.23.1
     # via importlib-metadata
 
