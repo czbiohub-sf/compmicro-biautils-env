@@ -6,8 +6,18 @@
 ipykernel
 napari-ome-zarr
 napari-animation
-iohub==0.3.4
-waveorder[all]==3.0.4
+iohub==0.3.9
+waveorder[all]==3.0.5
 ultrack==0.7.2
 napari-iohub @ git+https://github.com/czbiohub-sf/napari-iohub.git@6a5d13f16af0b6a7865a117e9309a837743ee28c
-biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@9e5f122a6af6c02b2e9a54f0e82b700f61e4f93e
+biahub[all] @ git+https://github.com/czbiohub-sf/biahub.git@b011bca57d5bf15c777839e4250e594f7471af3e
+# biahub pins cytoland to a git commit via [tool.uv.sources], which pip-compile cannot read,
+# and cytoland is not published on PyPI. Mirror that source here so pip-compile can resolve it.
+# cytoland depends on the viscy-* workspace packages from the same VisCy repo (also not on
+# PyPI), so each must be listed explicitly too. Keep this rev in sync with biahub's
+# [tool.uv.sources] entry for cytoland.
+cytoland @ git+https://github.com/mehta-lab/VisCy.git@4b62365c0df25929bffc7f01b3bb2d1c11d69cce#subdirectory=applications/cytoland
+viscy-data @ git+https://github.com/mehta-lab/VisCy.git@4b62365c0df25929bffc7f01b3bb2d1c11d69cce#subdirectory=packages/viscy-data
+viscy-models @ git+https://github.com/mehta-lab/VisCy.git@4b62365c0df25929bffc7f01b3bb2d1c11d69cce#subdirectory=packages/viscy-models
+viscy-transforms @ git+https://github.com/mehta-lab/VisCy.git@4b62365c0df25929bffc7f01b3bb2d1c11d69cce#subdirectory=packages/viscy-transforms
+viscy-utils @ git+https://github.com/mehta-lab/VisCy.git@4b62365c0df25929bffc7f01b3bb2d1c11d69cce#subdirectory=packages/viscy-utils
